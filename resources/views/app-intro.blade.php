@@ -30,7 +30,7 @@
         </div>
 
         <div class="font-league nav-button fixed bottom-5 z-40 flex flex-row w-full justify-between px-5 lg:px-60">
-            <div class="prev-slide w-[136px] lg:w-40 py-3 lg:py-3 rounded-lg bg-custom-dark text-center lg:text-lg text-custom-white font-semibold lg:order-1 hover:bg-custom-dark-hover duration-500">Kembali</div>
+            <div class="prev-slide opacity-0 w-[136px] lg:w-40 py-3 lg:py-3 rounded-lg bg-custom-dark text-center lg:text-lg text-custom-white font-semibold lg:order-1 hover:bg-custom-dark-hover duration-500">Kembali</div>
             <div class="next-slide w-[136px] lg:w-40 py-3 lg:py-3 rounded-lg bg-custom-white text-center lg:text-lg text-custom-dark font-semibold lg:order-2 hover:bg-custom-white-hover duration-500">Lanjut</div>
         </div>
 
@@ -38,22 +38,43 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script>
-        var swiper = new Swiper(".swiper", {          
-            effect: "creative",
-            creativeEffect: {
-                prev: {
-                shadow: true,
-                translate: ["-20%", 0, -1],
+        $(document).ready(function() {
+            var swiper = new Swiper(".swiper", {          
+                effect: "creative",
+                creativeEffect: {
+                    prev: {
+                    shadow: true,
+                    translate: ["-20%", 0, -1],
+                    },
+                    next: {
+                    translate: ["100%", 0, 0],
+                    },
                 },
-                next: {
-                translate: ["100%", 0, 0],
+                navigation: {
+                    nextEl: ".next-slide",
+                    prevEl: ".prev-slide",
                 },
-            },
-            navigation: {
-                nextEl: ".next-slide",
-                prevEl: ".prev-slide",
-            },
-        });
+
+                on: {
+                    slideChange: function (swiper) {
+                        if (swiper.activeIndex === 0) {
+                            $(".prev-slide").addClass("opacity-0");
+                        } else {
+                            $(".prev-slide").removeClass("opacity-0");
+                        }
+
+                        if (swiper.isEnd) {
+                            $(".next-slide").on("click", function() {
+                            window.location.href = "/login";
+                            });
+                        } else {
+                            $(".next-slide").off("click");
+                        }
+                    }
+                },
+            });
+        })
     </script>
 @endsection
