@@ -20,45 +20,49 @@
     </div>
 </header>
 
-<script>                
-    const header = document.querySelector('header');
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+    const $header = $('header');
     const threshold = 30;
 
-    window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
+    $(window).on('scroll', function () {
+        const scrolled = $(this).scrollTop();
         if (scrolled > threshold) {
-            header.classList.add('shadow-xl');
+            $header.addClass('shadow-xl');
         } else {
-            header.classList.remove('shadow-xl');
+            $header.removeClass('shadow-xl');
         }
-    })
+    });
 
-    const navContainer = document.querySelector('.hidden');
+    const $navContainer = $('.hidden');
 
     function openNav() {
-        const originalSvg = document.getElementById('originalSvg');
-        const newSvg = document.getElementById('newSvg');
+        const $originalSvg = $('#originalSvg');
+        const $newSvg = $('#newSvg');
 
-        originalSvg.style.display = originalSvg.style.display === 'none' ? 'block' : 'none';
-        newSvg.style.display = newSvg.style.display === 'block' ? 'none' : 'block';
+        $originalSvg.toggle();
+        $newSvg.toggle();
 
-        originalSvg.classList.toggle('hidden');
-        newSvg.classList.toggle('hidden');
-        navContainer.classList.toggle('hidden');
+        $originalSvg.toggleClass('hidden');
+        $newSvg.toggleClass('hidden');
+        $navContainer.toggleClass('hidden');
     }
 
-    const navItem = document.querySelectorAll('.nav-item');
+    const $navItems = $('.nav-item');
 
     function checkActiveRoutes() {
         const currentRoute = window.location.pathname.split('/').pop();
-        navItem.forEach(link => {
-            link.classList.remove('text-custom-green', 'font-bold');
-            link.classList.add('text-custom-dark');
+        $navItems.each(function () {
+            const $link = $(this);
+            $link.removeClass('text-custom-green font-bold').addClass('text-custom-dark');
 
-            if (link.querySelector('a').href.toLowerCase().endsWith(currentRoute)) {
-                link.classList.add('text-custom-green', 'font-bold');
+            if ($link.find('a').attr('href').toLowerCase().endsWith(currentRoute)) {
+                $link.addClass('text-custom-green font-bold');
             }
         });
     }
+
     checkActiveRoutes();
+});
 </script>

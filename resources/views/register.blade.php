@@ -47,37 +47,38 @@
         <a href="/user-home" class="w-full py-3 rounded-lg lg:rounded-lg bg-custom-green hover:bg-custom-green-hover text-center lg:text-lg text-custom-white-hover font-semibold lg:order-2 duration-500">Daftar</a>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script>
         function showHidePass() {
-            const showPass = document.getElementById('showPass');
-            const hidePass = document.getElementById('hidePass');
-            const passwordInput = document.getElementById('password'); // Get the password input
+            const $showPass = $('#showPass');
+            const $hidePass = $('#hidePass');
+            const $passwordInput = $('#password'); // Get the password input
 
-            if (passwordInput.type === "password") {
-                showPass.style.display = "block";
-                hidePass.style.display = "none";
+            if ($passwordInput.attr('type') === "password") {
+                $showPass.css('display', 'block');
+                $hidePass.css('display', 'none');
             } else {
-                showPass.style.display = "none";
-                hidePass.style.display = "block";
-            }  
+                $showPass.css('display', 'none');
+                $hidePass.css('display', 'block');
+            }
             
-            passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+            $passwordInput.attr('type', $passwordInput.attr('type') === "password" ? "text" : "password");
         }
 
         function showHideKonfirm() {
-            const showKonfirm = document.getElementById('showKonfirm');
-            const hideKonfirm = document.getElementById('hideKonfirm');
-            const konfirmInput = document.getElementById('konfirm'); // Get the password input
+            const $showKonfirm = $('#showKonfirm');
+            const $hideKonfirm = $('#hideKonfirm');
+            const $konfirmInput = $('#konfirm'); // Get the konfirm input
 
-            if (konfirmInput.type === "password") {
-                showKonfirm.style.display = "block";
-                hideKonfirm.style.display = "none";
+            if ($konfirmInput.attr('type') === "password") {
+                $showKonfirm.css('display', 'block');
+                $hideKonfirm.css('display', 'none');
             } else {
-                showKonfirm.style.display = "none";
-                hideKonfirm.style.display = "block";
-            }  
+                $showKonfirm.css('display', 'none');
+                $hideKonfirm.css('display', 'block');
+            }
             
-            konfirmInput.type = konfirmInput.type === "password" ? "text" : "password";
+            $konfirmInput.attr('type', $konfirmInput.attr('type') === "password" ? "text" : "password");
         }
     </script>
 @endsection

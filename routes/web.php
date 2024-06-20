@@ -21,6 +21,14 @@ Route::get('/', function () {
     return view('landing', compact('pageProperties'));
 });
 
+Route::get('/app-intro', function () {
+    $pageProperties = [
+        "pageName" => "Selamat Datang di "
+    ];
+
+    return view('app-intro', compact('pageProperties'));
+});
+
 Route::get('/login', function () {
     $pageProperties = [
         "pageName" => "Login |  "

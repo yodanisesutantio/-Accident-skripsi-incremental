@@ -11,6 +11,7 @@ export default {
       'custom-green-hover': '#0E3F4F',
       'custom-dark': '#040B0D',
       'custom-dark-hover': '#151C1E',
+      'custom-dark-overlay': 'rgba(4,11,13,.7)',
       'custom-dark-low': 'rgba(4,11,13,.6)',
       'custom-white': '#EBF0F2',
       'custom-white-hover': '#FFF',
