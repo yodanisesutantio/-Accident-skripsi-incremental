@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\registerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,21 +32,10 @@ Route::get('/app-intro', function () {
     return view('app-intro', compact('pageProperties'));
 });
 
-Route::get('/login', function () {
-    $pageProperties = [
-        "pageName" => "Login |  "
-    ];
+Route::get('/login', [loginController::class, 'index']);
 
-    return view('login', compact('pageProperties'));
-});
-
-Route::get('/register', function () {
-    $pageProperties = [
-        "pageName" => "Daftar Akun |  "
-    ];
-
-    return view('register', compact('pageProperties'));
-});
+Route::get('/register', [registerController::class, 'index']);
+Route::post('/register', [registerController::class, 'store']);
 
 Route::get('/instructor-home', function () {
     $pageProperties = [
