@@ -33,8 +33,6 @@
             <div class="prev-slide opacity-0 w-[136px] lg:w-40 py-3 lg:py-3 rounded-lg bg-custom-dark text-center lg:text-lg text-custom-white font-semibold lg:order-1 hover:bg-custom-dark-hover duration-500">Kembali</div>
             <div class="next-slide w-[136px] lg:w-40 py-3 lg:py-3 rounded-lg bg-custom-white text-center lg:text-lg text-custom-dark font-semibold lg:order-2 hover:bg-custom-white-hover duration-500">Lanjut</div>
         </div>
-
-        <div class="absolute right-2 top-8 lg:right-5 lg:top-5 z-40 p-3"><a href="/login" class="font-league font-light text-base lg:text-lg text-custom-white underline hover:no-underline">Lewati</a></div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -67,7 +65,7 @@
 
                         if (swiper.isEnd) {
                             $(".next-slide").on("click", function() {
-                            window.location.href = "/login";
+                            window.location.href = "/user-home";
                             });
                         } else {
                             $(".next-slide").off("click");

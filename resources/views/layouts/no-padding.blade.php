@@ -14,7 +14,7 @@
     {{-- Swiper cdn --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
-    <title>{{ $pageProperties['pageName'] }} Kemudi</title>
+    <title>{{ $pageName }} Kemudi</title>
 </head>
 <body class="bg-custom-white">
     @yield('content')

@@ -13,7 +13,7 @@
         <div class="flex flex-col mt-4 gap-5 lg:gap-7">
             <div class="flex flex-col gap-1">
                 <label for="fullname" class="font-semibold font-league text-xl text-custom-grey">Nama Lengkap<span class="text-custom-destructive">*</span></label>
-                <input type="text" name="fullname" id="fullname" placeholder="Nama Lengkap" class="p-4 font-league text-lg/[0] text-custom-secondary placeholder:#48484833 rounded-lg @error('fullname') border-2 border-custom-destructive @enderror" value="{{ old('fullname') }}">
+                <input type="text" name="fullname" id="fullname" placeholder="Nama Lengkap" class="p-4 font-league text-lg/[0] text-custom-secondary placeholder:#48484833 rounded-lg @error('fullname') border-2 border-custom-destructive @enderror" autofocus value="{{ old('fullname') }}">
                 @error('fullname')
                     <span class="text-custom-destructive">{{ $message }}</span>
                 @enderror

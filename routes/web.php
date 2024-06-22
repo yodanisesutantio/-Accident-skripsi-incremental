@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\generalPage;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\registerController;
+use App\Http\Controllers\homeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,50 +18,17 @@ use App\Http\Controllers\registerController;
 |
 */
 
-Route::get('/', function () {
-    $pageProperties = [
-        "pageName" => "Selamat Datang di "
-    ];
+Route::get('/', [generalPage::class, 'landing']);
 
-    return view('landing', compact('pageProperties'));
-});
+Route::get('/app-intro', [generalPage::class, 'appIntro']);
 
-Route::get('/app-intro', function () {
-    $pageProperties = [
-        "pageName" => "Selamat Datang di "
-    ];
+Route::get('/login', [loginController::class, 'index'])->middleware('guest')->name('login');
+Route::post('/login', [loginController::class, 'authenticate']);
+Route::post('/logout', [loginController::class, 'logout']);
 
-    return view('app-intro', compact('pageProperties'));
-});
-
-Route::get('/login', [loginController::class, 'index']);
-
-Route::get('/register', [registerController::class, 'index']);
+Route::get('/register', [registerController::class, 'index'])->middleware('guest');
 Route::post('/register', [registerController::class, 'store']);
 
-Route::get('/instructor-home', function () {
-    $pageProperties = [
-        "pageName" => "Beranda |  ",
-        "userName" => "Instruktur",
-    ];
-
-    return view('home/instructor-home', compact('pageProperties'));
-});
-
-Route::get('/admin-home', function () {
-    $pageProperties = [
-        "pageName" => "Beranda |  ",
-        "userName" => "Pemilik / Admin",
-    ];
-
-    return view('home/admin-home', compact('pageProperties'));
-});
-
-Route::get('/user-home', function () {
-    $pageProperties = [
-        "pageName" => "Beranda |  ",
-        "userName" => "General User",
-    ];
-
-    return view('home/user-home', compact('pageProperties'));
-});
+Route::get('/user-home', [homeController::class, 'users'])->middleware('auth');
+Route::get('/instructor-home', [homeController::class, 'instructor'])->middleware('auth');
+Route::get('/admin-home', [homeController::class, 'admin'])->middleware('auth');
