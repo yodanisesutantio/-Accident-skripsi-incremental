@@ -26,7 +26,7 @@ class loginController extends Controller
           
             $request->session()->regenerate();
           
-            return redirect()->intended($role . '-home');            
+            return redirect()->intended($role . '-index');            
         }
 
         return back()->withErrors([

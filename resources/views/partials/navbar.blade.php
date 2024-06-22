@@ -9,11 +9,11 @@
                     <ul>
                         @auth
                             @if (auth()->user()->role === 'user')
-                                <li class="p-3 text-custom-green font-bold lg:text-xl hover:bg-custom-dark/10 cursor-pointer nav-item"><a href="user-home">Beranda</a></li>
+                                <li class="p-3 text-custom-green font-bold lg:text-xl hover:bg-custom-dark/10 cursor-pointer nav-item"><a href="user-index">Beranda</a></li>
                             @elseif (auth()->user()->role === 'instructor')
-                                <li class="p-3 text-custom-green font-bold lg:text-xl hover:bg-custom-dark/10 cursor-pointer nav-item"><a href="instructor-home">Beranda</a></li>
+                                <li class="p-3 text-custom-green font-bold lg:text-xl hover:bg-custom-dark/10 cursor-pointer nav-item"><a href="instructor-index">Beranda</a></li>
                             @elseif (auth()->user()->role === 'admin')
-                                <li class="p-3 text-custom-green font-bold lg:text-xl hover:bg-custom-dark/10 cursor-pointer nav-item"><a href="admin-home">Beranda</a></li>
+                                <li class="p-3 text-custom-green font-bold lg:text-xl hover:bg-custom-dark/10 cursor-pointer nav-item"><a href="admin-index">Beranda</a></li>
                             @endif
                         @else
                             <li class="p-3 text-custom-green font-bold lg:text-xl hover:bg-custom-dark/10 cursor-pointer nav-item"><a href="tamu">Beranda</a></li>
@@ -23,7 +23,7 @@
                         <li class="p-3 text-custom-green font-bold lg:text-xl"><a href=""><hr class="border-custom-grey border-opacity-35"></a></li>
                         @auth
                             <li class="text-custom-destructive font-medium lg:text-xl hover:bg-custom-dark/10 cursor-pointer nav-item">
-                                <form action="/logout" method="post" class="mb-0">
+                                <form action="/logout" method="post" class="mb-1">
                                     @csrf
                                     <button type="submit" class="w-full text-left p-3">Log Out</button>
                                 </form>

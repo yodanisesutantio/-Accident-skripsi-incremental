@@ -29,7 +29,7 @@ Route::post('/logout', [loginController::class, 'logout']);
 Route::get('/register', [registerController::class, 'index'])->middleware('guest');
 Route::post('/register', [registerController::class, 'store']);
 
-Route::get('/{role}-home', [homeController::class, 'showHome'])->middleware('auth');
+Route::get('/{role}-index', [homeController::class, 'index'])->middleware('auth');
 Route::get('/tamu', [homeController::class, 'tamu']);
 
 Route::get('/bersihkan', function() {

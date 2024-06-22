@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class homeController extends Controller
 {
-    public function showHome($role) {
+    public function index($role) {
         if ($role !== auth()->user()->role) {
             abort(403, 'Unauthorized Access');
           }
