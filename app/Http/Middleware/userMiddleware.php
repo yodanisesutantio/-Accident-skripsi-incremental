@@ -16,10 +16,11 @@ class userMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::check() || Auth::user()->role !== 'user') {
-            return redirect('/login');
+        if (Auth::check() && Auth::user()->role === 'user') {
+            return $next($request);
+            // return redirect('/login');
         }
 
-        return $next($request);
+        return redirect()->back();
     }
 }

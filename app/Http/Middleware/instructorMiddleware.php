@@ -16,10 +16,10 @@ class instructorMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::check() || Auth::user()->role !== 'instructor') {
-            return redirect('/login');
+        if (Auth::check() && Auth::user()->role === 'instructor') {
+            return $next($request);
         }
 
-        return $next($request);
+        return redirect()->back();
     }
 }
