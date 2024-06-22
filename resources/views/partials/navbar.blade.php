@@ -7,7 +7,13 @@
             <div class="hidden">
                 <div class="flex flex-col absolute w-[calc(100%-2.5rem)] lg:w-[calc(100%-8.5rem)] top-20 p-2 shadow-lg shadow-custom-grey bg-custom-white-hover border border-custom-green backdrop-blur-sm rounded-xl">
                     <ul>
-                        <li class="p-3 text-custom-green font-bold lg:text-xl hover:bg-custom-dark/10 cursor-pointer nav-item"><a href="user-home">Beranda</a></li>
+                        @if (auth()->user()->role === 'user')
+                            <li class="p-3 text-custom-green font-bold lg:text-xl hover:bg-custom-dark/10 cursor-pointer nav-item"><a href="user-home">Beranda</a></li>
+                        @elseif (auth()->user()->role === 'instructor')
+                            <li class="p-3 text-custom-green font-bold lg:text-xl hover:bg-custom-dark/10 cursor-pointer nav-item"><a href="instructor-home">Beranda</a></li>
+                        @elseif (auth()->user()->role === 'admin')
+                            <li class="p-3 text-custom-green font-bold lg:text-xl hover:bg-custom-dark/10 cursor-pointer nav-item"><a href="admin-home">Beranda</a></li>
+                        @endif
                         <li class="p-3 text-custom-green font-bold lg:text-xl hover:bg-custom-dark/10 cursor-pointer nav-item"><a href="course-list">Kursus</a></li>
                         <li class="p-3 text-custom-green font-bold lg:text-xl hover:bg-custom-dark/10 cursor-pointer nav-item"><a href="user-profile">Profil</a></li>
                         <li class="p-3 text-custom-green font-bold lg:text-xl"><a href=""><hr class="border-custom-grey border-opacity-35"></a></li>
