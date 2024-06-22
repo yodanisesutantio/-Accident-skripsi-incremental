@@ -7,17 +7,17 @@ use Illuminate\Http\Request;
 class homeController extends Controller
 {
     public function users() {
-        return view('home.user-home', [
+        return view('home.user', [
             "pageName" => "Beranda |  "
         ]);
     }
     public function instructor() {
-        return view('home.instructor-home', [
+        return view('home.instructor', [
             "pageName" => "Beranda |  "
         ]);
     }
     public function admin() {
-        return view('home.admin-home', [
+        return view('home.admin', [
             "pageName" => "Beranda |  "
         ]);
     }
