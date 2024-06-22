@@ -6,19 +6,15 @@ use Illuminate\Http\Request;
 
 class homeController extends Controller
 {
-    public function users() {
-        return view('home.user', [
-            "pageName" => "Beranda |  "
-        ]);
-    }
-    public function instructor() {
-        return view('home.instructor', [
-            "pageName" => "Beranda |  "
-        ]);
-    }
-    public function admin() {
-        return view('home.admin', [
-            "pageName" => "Beranda |  "
-        ]);
+    public function showHome($role) {
+        if ($role !== auth()->user()->role) {
+            abort(403, 'Unauthorized Access');
+          }
+        
+          $view = 'home.' . $role; 
+        
+          return view($view, [
+            "pageName" => "Beranda | ",
+          ]);
     }
 }

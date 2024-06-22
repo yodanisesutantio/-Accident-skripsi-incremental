@@ -29,6 +29,4 @@ Route::post('/logout', [loginController::class, 'logout']);
 Route::get('/register', [registerController::class, 'index'])->middleware('guest');
 Route::post('/register', [registerController::class, 'store']);
 
-Route::get('/user-home', [homeController::class, 'users'])->middleware('auth');
-Route::get('/instructor-home', [homeController::class, 'instructor'])->middleware('auth');
-Route::get('/admin-home', [homeController::class, 'admin'])->middleware('auth');
+Route::get('/{role}-home', [HomeController::class, 'showHome'])->middleware('auth');
