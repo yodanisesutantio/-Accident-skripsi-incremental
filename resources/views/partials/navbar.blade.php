@@ -22,14 +22,14 @@
                         <li class="p-3 text-custom-green font-bold lg:text-xl hover:bg-custom-dark/10 cursor-pointer nav-item"><a href="user-profile">Profil</a></li>
                         <li class="p-3 text-custom-green font-bold lg:text-xl"><a href=""><hr class="border-custom-grey border-opacity-35"></a></li>
                         @auth
-                            <li class="text-custom-destructive font-medium lg:text-xl hover:bg-custom-dark/10 cursor-pointer nav-item">
+                            <li class="lg:text-xl hover:bg-custom-dark/10 cursor-pointer nav-item">
                                 <form action="/logout" method="post" class="mb-1">
                                     @csrf
-                                    <button type="submit" class="w-full text-left p-3">Log Out</button>
+                                    <button type="submit" class="w-full text-left p-3 text-custom-destructive font-semibold">Log Out</button>
                                 </form>
                             </li>
                         @else
-                            <li class="p-3 lg:text-xl hover:bg-custom-dark/10 cursor-pointer nav-item"><a href="/login" class="text-custom-green font-bold">Login</a></li>
+                            <li class="mb-1 p-3 lg:text-xl hover:bg-custom-dark/10 cursor-pointer nav-item"><a href="/login" class="text-custom-green font-semibold">Login</a></li>
                         @endauth
                     </ul>                    
                 </div>

@@ -6,6 +6,9 @@ use App\Http\Controllers\generalPage;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\homeController;
+use App\Http\Controllers\userController;
+use App\Http\Controllers\instructorController;
+use App\Http\Controllers\adminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +32,18 @@ Route::post('/logout', [loginController::class, 'logout']);
 Route::get('/register', [registerController::class, 'index'])->middleware('guest');
 Route::post('/register', [registerController::class, 'store']);
 
-Route::get('/{role}-index', [homeController::class, 'index'])->middleware('auth');
+Route::middleware(['auth', 'App\Http\Middleware\userMiddleware'])->group(function () {
+    Route::get('/user-index', [userController::class, 'index']);
+});
+
+Route::middleware(['auth', 'App\Http\Middleware\instructorMiddleware'])->group(function () {
+    Route::get('/instructor-index', [instructorController::class, 'index']);
+});
+
+Route::middleware(['auth', 'App\Http\Middleware\adminMiddleware'])->group(function () {
+    Route::get('/admin-index', [adminController::class, 'index']);
+});
+
 Route::get('/tamu', [homeController::class, 'tamu']);
 
 Route::get('/bersihkan', function() {
