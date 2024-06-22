@@ -29,4 +29,13 @@ Route::post('/logout', [loginController::class, 'logout']);
 Route::get('/register', [registerController::class, 'index'])->middleware('guest');
 Route::post('/register', [registerController::class, 'store']);
 
-Route::get('/{role}-home', [HomeController::class, 'showHome'])->middleware('auth');
+Route::get('/{role}-home', [homeController::class, 'showHome'])->middleware('auth');
+Route::get('/tamu', [homeController::class, 'tamu']);
+
+Route::get('/bersihkan', function() {
+    $exitCode = Artisan::call('config:clear');
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('config:cache');
+    $exitCode = Artisan::call('route:cache');
+    return 'DONE';
+});

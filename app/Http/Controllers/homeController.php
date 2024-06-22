@@ -17,4 +17,12 @@ class homeController extends Controller
             "pageName" => "Beranda | ",
           ]);
     }
+
+    public function tamu() {        
+        // dd(auth()->user());
+        return view('home.tamu', [
+            "pageName" => "Selamat Datang di "
+        ]);
+
+    }
 }
