@@ -65,7 +65,7 @@
 
                         if (swiper.isEnd) {
                             $(".next-slide").on("click", function() {
-                            window.location.href = "/user-home";
+                            window.location.href = "/user-index";
                             });
                         } else {
                             $(".next-slide").off("click");

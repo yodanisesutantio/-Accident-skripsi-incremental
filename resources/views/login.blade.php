@@ -56,5 +56,16 @@
 
             $passwordInput.attr('type', $passwordInput.attr('type') === "password" ? "text" : "password");
         }
+
+        $(document).ready(function() {
+            $("#username").on("input", function() {
+                $(this).val($(this).val().toLowerCase());
+                if (event.type === "keydown" && event.keyCode === 32) {
+                    event.preventDefault();
+                } else if (event.type === "input") {
+                    $(this).val($(this).val().replace(/\s/g, "")); 
+                }
+            });
+        });
     </script>
 @endsection

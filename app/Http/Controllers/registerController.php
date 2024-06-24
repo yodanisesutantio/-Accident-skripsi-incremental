@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class registerController extends Controller
 {
@@ -33,7 +34,18 @@ class registerController extends Controller
         $validatedData['password'] = bcrypt($validatedData['password']);
 
         User::create($validatedData);
+        $credentials = $request->validate([
+            'username' => ['required'],
+            'password' => ['required']
+        ]);
 
-        return redirect('/app-intro');
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            $role = $user->role;
+          
+            $request->session()->regenerate();
+          
+            return redirect()->intended('/' . $role . '-index');
+        }
     }
 }
